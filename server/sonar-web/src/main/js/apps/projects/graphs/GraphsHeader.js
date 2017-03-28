@@ -21,23 +21,23 @@
 import React from 'react';
 import Select from 'react-select';
 import { translate } from '../../../helpers/l10n';
-import { VISUALIZATIONS } from '../utils';
+import { GRAPHS } from '../utils';
 
-export default class VisualizationsHeader extends React.PureComponent {
+export default class GraphsHeader extends React.PureComponent {
   props: {
-    onVisualizationChange: (string) => void,
-    visualization: string
+    onGraphChange: (string) => void,
+    graph: string
   };
 
   handleChange = (option: { value: string }) => {
-    this.props.onVisualizationChange(option.value);
+    this.props.onGraphChange(option.value);
   };
 
   render() {
-    const options = VISUALIZATIONS.map(option => ({
+    const options = GRAPHS.map(option => ({
       value: option,
       label: option === 'quality'
-        ? translate('projects.quality_model')
+        ? translate('projects.graph.quality_model')
         : translate('metric', option, 'name')
     }));
 
@@ -49,7 +49,7 @@ export default class VisualizationsHeader extends React.PureComponent {
           onChange={this.handleChange}
           options={options}
           searchable={false}
-          value={this.props.visualization}
+          value={this.props.graph}
         />
       </header>
     );

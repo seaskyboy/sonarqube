@@ -1,6 +1,6 @@
-exports[`test should handle \`view\` and \`visualization\` 1`] = `undefined`;
+exports[`test should handle \`view\` and \`graphs\` 1`] = `undefined`;
 
-exports[`test should handle \`view\` and \`visualization\` 2`] = `
+exports[`test should handle \`view\` and \`graphs\` 2`] = `
 <div
   className="projects-facets-reset">
   <Link
@@ -11,8 +11,8 @@ exports[`test should handle \`view\` and \`visualization\` 2`] = `
       Object {
         "pathname": "/projects",
         "query": Object {
-          "view": "visualizations",
-          "visualization": "bugs",
+          "graph": "bugs",
+          "view": "graphs",
         },
       }
     }>

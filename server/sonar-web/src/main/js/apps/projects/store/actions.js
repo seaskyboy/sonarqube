@@ -33,7 +33,7 @@ import { getOrganizations } from '../../../api/organizations';
 import { receiveOrganizations } from '../../../store/organizations/duck';
 
 const PAGE_SIZE = 50;
-const PAGE_SIZE_VISUALIZATIONS = 99;
+const PAGE_SIZE_GRAPHS = 99;
 
 const METRICS = [
   'alert_status',
@@ -46,7 +46,7 @@ const METRICS = [
   'ncloc_language_distribution'
 ];
 
-const METRICS_BY_VISUALIZATION = {
+const METRICS_BY_GRAPH = {
   quality: ['reliability_rating', 'security_rating', 'coverage', 'ncloc', 'sqale_index'],
   // x, y, size, color
   bugs: ['ncloc', 'reliability_remediation_effort', 'bugs', 'reliability_rating'],
@@ -101,8 +101,8 @@ const onReceiveOrganizations = dispatch =>
   };
 
 const defineMetrics = query => {
-  if (query.view === 'visualizations') {
-    return METRICS_BY_VISUALIZATION[query.visualization || 'quality'];
+  if (query.view === 'graphs') {
+    return METRICS_BY_GRAPH[query.graph || 'quality'];
   } else {
     return METRICS;
   }
@@ -179,7 +179,7 @@ const onReceiveMoreProjects = (dispatch, query) =>
 export const fetchProjects = (query, isFavorite, organization) =>
   dispatch => {
     dispatch(updateState({ loading: true }));
-    const ps = query.view === 'visualizations' ? PAGE_SIZE_VISUALIZATIONS : PAGE_SIZE;
+    const ps = query.view === 'graphs' ? PAGE_SIZE_GRAPHS : PAGE_SIZE;
     const data = convertToQueryData(query, isFavorite, organization, {
       ps,
       facets: FACETS.join(),

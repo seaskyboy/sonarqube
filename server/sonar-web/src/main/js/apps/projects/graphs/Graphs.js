@@ -19,7 +19,7 @@
  */
 // @flow
 import React from 'react';
-import VisualizationsHeader from './VisualizationsHeader';
+import GraphsHeader from './GraphsHeader';
 import QualityModel from './QualityModel';
 import Bugs from './Bugs';
 import Vulnerabilities from './Vulnerabilities';
@@ -29,18 +29,18 @@ import DuplicatedBlocks from './DuplicatedBlocks';
 import { localizeSorting } from '../utils';
 import { translate, translateWithParameters } from '../../../helpers/l10n';
 
-export default class Visualizations extends React.PureComponent {
+export default class Graphs extends React.PureComponent {
   props: {
     displayOrganizations: boolean,
-    onVisualizationChange: (string) => void,
+    onGraphChange: (string) => void,
     projects?: Array<*>,
     sort?: string,
     total?: number,
-    visualization: string
+    graph: string
   };
 
-  renderVisualization(projects: Array<*>) {
-    const visualizationToComponent = {
+  renderGraph(projects: Array<*>) {
+    const graphToComponent = {
       quality: QualityModel,
       bugs: Bugs,
       vulnerabilities: Vulnerabilities,
@@ -48,7 +48,7 @@ export default class Visualizations extends React.PureComponent {
       uncovered_lines: UncoveredLines,
       duplicated_blocks: DuplicatedBlocks
     };
-    const Component = visualizationToComponent[this.props.visualization];
+    const Component = graphToComponent[this.props.graph];
 
     return Component
       ? <Component displayOrganizations={this.props.displayOrganizations} projects={projects} />
@@ -61,8 +61,8 @@ export default class Visualizations extends React.PureComponent {
     const limitReached = projects != null && total != null && projects.length < total;
 
     return (
-      <footer className="projects-visualizations-footer">
-        <p>{translate('projects.visualization', this.props.visualization, 'description')}</p>
+      <footer className="projects-graph-footer">
+        <p>{translate('projects.graph', this.props.graph, 'description')}</p>
         {limitReached &&
           <p className="note spacer-top">
             {translateWithParameters(
@@ -80,14 +80,11 @@ export default class Visualizations extends React.PureComponent {
     const { projects } = this.props;
 
     return (
-      <div className="boxed-group projects-visualizations">
-        <VisualizationsHeader
-          onVisualizationChange={this.props.onVisualizationChange}
-          visualization={this.props.visualization}
-        />
-        <div className="projects-visualization">
+      <div className="boxed-group projects-graphs">
+        <GraphsHeader onGraphChange={this.props.onGraphChange} graph={this.props.graph} />
+        <div className="projects-graph">
           <div>
-            {projects != null && this.renderVisualization(projects)}
+            {projects != null && this.renderGraph(projects)}
           </div>
         </div>
         {this.renderFooter()}

@@ -21,10 +21,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import PageSidebar from '../PageSidebar';
 
-it('should handle `view` and `visualization`', () => {
+it('should handle `view` and `graphs`', () => {
   const query = {
-    view: 'visualizations',
-    visualization: 'bugs'
+    view: 'graphs',
+    graph: 'bugs'
   };
   const sidebar = shallow(<PageSidebar query={query} isFavorite={false} />);
   expect(sidebar.find('.projects-facets-reset')).toMatchSnapshot();

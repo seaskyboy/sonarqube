@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import { VISUALIZATIONS } from '../utils';
+import { GRAPHS } from '../utils';
 
 const getAsNumericRating = value => {
   if (value === '' || value == null || isNaN(value)) {
@@ -48,10 +48,10 @@ const getAsArray = (values, elementGetter) => {
   return values.split(',').map(elementGetter);
 };
 
-const getView = rawValue => rawValue === 'visualizations' ? rawValue : undefined;
+const getView = rawValue => rawValue === 'graphs' ? rawValue : undefined;
 
-const getVisualization = value => {
-  return VISUALIZATIONS.includes(value) ? value : null;
+const getGraph = value => {
+  return GRAPHS.includes(value) ? value : null;
 };
 
 export const parseUrlQuery = urlQuery => ({
@@ -67,7 +67,7 @@ export const parseUrlQuery = urlQuery => ({
   search: getAsString(urlQuery['search']),
   sort: getAsString(urlQuery['sort']),
   view: getView(urlQuery['view']),
-  visualization: getVisualization(urlQuery['visualization'])
+  graph: getGraph(urlQuery['graph'])
 });
 
 export const mapMetricToProperty = metricKey => {

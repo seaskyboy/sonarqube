@@ -22,5 +22,5 @@ import { shallow } from 'enzyme';
 import ViewSelect from '../ViewSelect';
 
 it('should render options', () => {
-  expect(shallow(<ViewSelect view="visualizations" />)).toMatchSnapshot();
+  expect(shallow(<ViewSelect view="graphs" />)).toMatchSnapshot();
 });

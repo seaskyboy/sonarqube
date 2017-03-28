@@ -18,7 +18,7 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import { connect } from 'react-redux';
-import Visualizations from './Visualizations';
+import Graphs from './Graphs';
 import {
   getProjects,
   getComponent,
@@ -46,4 +46,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Visualizations);
+export default connect(mapStateToProps)(Graphs);

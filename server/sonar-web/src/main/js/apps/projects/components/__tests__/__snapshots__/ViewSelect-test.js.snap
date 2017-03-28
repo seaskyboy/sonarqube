@@ -10,10 +10,10 @@ exports[`test should render options 1`] = `
         "value": "list",
       },
       Object {
-        "label": "projects.view.visualizations",
-        "value": "visualizations",
+        "label": "projects.view.graphs",
+        "value": "graphs",
       },
     ]
   }
-  value="visualizations" />
+  value="graphs" />
 `;

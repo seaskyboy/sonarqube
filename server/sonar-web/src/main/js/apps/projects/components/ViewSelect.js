@@ -33,7 +33,7 @@ export default class ViewSelect extends React.PureComponent {
   };
 
   render() {
-    const options = ['list', 'visualizations'].map(option => ({
+    const options = ['list', 'graphs'].map(option => ({
       value: option,
       label: translate('projects.view', option)
     }));

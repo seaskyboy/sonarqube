@@ -182,14 +182,14 @@
   background-color: #4b9fd5;
 }
 
-.projects-visualization {
+.projects-graph {
   position: relative;
   height: 600px;
   margin-top: 15px;
   border-top: 1px solid #e6e6e6;
 }
 
-.projects-visualization .measure-details-bubble-chart-axis.y {
+.projects-graph .measure-details-bubble-chart-axis.y {
   width: 300px;
   left: 15px;
   margin-top: 150px;
@@ -197,7 +197,7 @@
   text-align: center;
 }
 
-.projects-visualizations-footer {
+.projects-graph-footer {
   margin-top: 8px;
   padding: 15px 0;
   border-top: 1px solid #e6e6e6;
@@ -205,7 +205,7 @@
   text-align: center;
 }
 
-.projects-visualizations-footer .note {
+.projects-graph-footer .note {
   font-style: italic;
 }
 

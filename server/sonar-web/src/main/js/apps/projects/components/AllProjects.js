@@ -22,7 +22,7 @@ import PageHeaderContainer from './PageHeaderContainer';
 import ProjectsListContainer from './ProjectsListContainer';
 import ProjectsListFooterContainer from './ProjectsListFooterContainer';
 import PageSidebar from './PageSidebar';
-import VisualizationsContainer from '../visualizations/VisualizationsContainer';
+import GraphsContainer from '../graphs/GraphsContainer';
 import { parseUrlQuery } from '../store/utils';
 import '../styles.css';
 
@@ -65,8 +65,8 @@ export default class AllProjects extends React.Component {
       ...this.props.location.query,
       view: view === 'list' ? undefined : view
     };
-    if (query.view !== 'visualizations') {
-      Object.assign(query, { visualization: undefined });
+    if (query.view !== 'graphs') {
+      Object.assign(query, { graph: undefined });
     }
     this.props.router.push({
       pathname: this.props.location.pathname,
@@ -74,13 +74,13 @@ export default class AllProjects extends React.Component {
     });
   };
 
-  handleVisualizationChange = visualization => {
+  handleGraphChange = graph => {
     this.props.router.push({
       pathname: this.props.location.pathname,
       query: {
         ...this.props.location.query,
-        view: 'visualizations',
-        visualization
+        view: 'graphs',
+        graph
       }
     });
   };
@@ -90,7 +90,7 @@ export default class AllProjects extends React.Component {
     const isFiltered = Object.keys(query).some(key => query[key] != null);
 
     const view = query.view || 'list';
-    const visualization = query.visualization || 'quality';
+    const graph = query.graph || 'quality';
 
     const top = this.props.organization ? 95 : 30;
 
@@ -119,11 +119,11 @@ export default class AllProjects extends React.Component {
               isFavorite={this.props.isFavorite}
               organization={this.props.organization}
             />}
-          {view === 'visualizations' &&
-            <VisualizationsContainer
-              onVisualizationChange={this.handleVisualizationChange}
+          {view === 'graphs' &&
+            <GraphsContainer
+              onGraphChange={this.handleGraphChange}
               sort={query.sort}
-              visualization={visualization}
+              graph={graph}
             />}
         </div>
       </div>

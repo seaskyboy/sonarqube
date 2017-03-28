@@ -43,15 +43,15 @@ export default class PageSidebar extends React.PureComponent {
     const { query } = this.props;
 
     const isFiltered = Object.keys(query)
-      .filter(key => key !== 'view' && key !== 'visualization')
+      .filter(key => key !== 'view' && key !== 'graph')
       .some(key => query[key] != null);
 
     const basePathName = this.props.organization
       ? `/organizations/${this.props.organization.key}/projects`
       : '/projects';
     const pathname = basePathName + (this.props.isFavorite ? '/favorite' : '');
-    const linkQuery = query.view === 'visualizations'
-      ? { view: query.view, visualization: query.visualization }
+    const linkQuery = query.view === 'graphs'
+      ? { view: query.view, graph: query.graph }
       : undefined;
 
     return (
